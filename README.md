@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring.svg?style=svg)](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring)
+
 # rackspace_monitoring-cookbook
 
 The Rackspace Cloud-monitoring cookbook provides resource primitives (LWRPs) for use in recipes.
@@ -51,7 +53,7 @@ The :create action handles package installation. The internal configuration file
 
 #### Parameters
 
-* `cloud_credentials_username` - Your cloud username 
+* `cloud_credentials_username` - Your cloud username
 * `cloud_credentials_api_key` - Your cloud [api-key](http://www.rackspace.com/knowledge_center/article/view-and-reset-your-api-key)
 * `package_name` - Rackspace monitoring agent package name (default to `rackspace-monitoring-agent`)
 * `package_action` - Which action to run when `:create` default to `install`
@@ -89,7 +91,7 @@ The :create action handles package installation. The internal configuration file
   * `disk` : The disk to check (eg '/dev/xvda1') String/Array - Default : Create one file per /dev/(sd|vd|xvd|hd)
   * `filesystem` : The mount point to check (eg '/var' or 'C:') String/Array - Default : Create one file per filesystem
   * `network` : The network device to check (eg 'eth0') - Default : Fallback to the default interface
-* `:target_hostname` - required for http only - Server to request for the HTTP check 
+* `:target_hostname` - required for http only - Server to request for the HTTP check
 * `:send_warning` - required for network only - Threshold for the default send alarm criteria - Default : 18350080
 * `:send_critical` - required for network only - Threshold for the default send alarm criteria - Default : 24903680
 * `:recv_warning` - required for network only - Threshold for the default receive alarm criteria - Default : 18350080
@@ -119,7 +121,7 @@ The :create action handles package installation. The internal configuration file
 #### Actions
 * `:create` - Create an agent configuration
 * `:delete` - Removes an agent configuration (will not remove the check)
-* `:disable/:enable` Disable/enable the agent check. 
+* `:disable/:enable` Disable/enable the agent check.
 
 
 ### Examples
