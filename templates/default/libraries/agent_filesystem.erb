@@ -1,0 +1,7 @@
+          if (percentage(metric['used'], metric['total']) > <%= new_resource.critical %> ) {
+              return new AlarmStatus(CRITICAL, 'Disk usage is above <%= new_resource.critical %>%, #{used} out of #{total}');
+          }
+          if (percentage(metric['used'], metric['total']) > <%= new_resource.warning %> ) {
+              return new AlarmStatus(WARNING, 'Disk usage is above <%= new_resource.warning %>%, #{used} out of #{total}');
+          }
+          return new AlarmStatus(OK, 'Disk usage is below your warning threshold of <%= new_resource.warning %>%, #{used} out of #{total}');

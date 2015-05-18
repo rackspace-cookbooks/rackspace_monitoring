@@ -1,0 +1,39 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  attributes:
+    rackspace_monitoring:
+      cloud_credentials_username: <%= ENV['RACKSPACE_USERNAME'] %>
+      cloud_credentials_api_key: <%= ENV['RACKSPACE_API_KEY']%>
+    cloud:
+      local_ipv4: 10.0.0.1
+      public_ipv4: 8.0.0.1
+
+platforms:
+  - name: centos-6.6
+    run_list:
+    - recipe[yum]
+  - name: ubuntu-12.04
+    run_list:
+    - recipe[apt]
+  - name: ubuntu-14.04
+    run_list:
+    - recipe[apt]
+
+
+suites:
+  - name: default
+    run_list:
+      - recipe[rackspace_monitoring_service_test::default]
+      - recipe[rackspace_monitoring_check_test::cpu]
+      - recipe[rackspace_monitoring_check_test::disk]
+      - recipe[rackspace_monitoring_check_test::filesystem]
+      - recipe[rackspace_monitoring_check_test::http]
+      - recipe[rackspace_monitoring_check_test::load]
+      - recipe[rackspace_monitoring_check_test::memory]
+      - recipe[rackspace_monitoring_check_test::network]
+      - recipe[rackspace_monitoring_check_test::custom]
+      - recipe[rackspace_monitoring_check_test::plugin]

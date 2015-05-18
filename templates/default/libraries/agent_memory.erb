@@ -1,0 +1,7 @@
+          if (percentage(metric['actual_used'], metric['total']) > <%= new_resource.critical %> ) {
+            return new AlarmStatus(CRITICAL, 'Memory usage is above your critical threshold of <%= new_resource.critical %>%');
+          }
+          if (percentage(metric['actual_used'], metric['total']) > <%= new_resource.warning %> )
+            return new AlarmStatus(WARNING, 'Memory usage is above your warning threshold of <%= new_resource.warning %>%');
+          }
+            return new AlarmStatus(OK, 'Memory usage is below your warning threshold of <%= new_resource.warning %>%');

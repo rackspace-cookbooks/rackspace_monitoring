@@ -1,0 +1,17 @@
+# CHEF MANAGED FILE: DO NOT EDIT
+# Controlling Cookbook: <%= @cookbook_name %>
+#
+
+type: agent.memory
+label: <%= @label %>
+disabled: <%= @disabled %>
+period: <%= @period %>
+timeout: <%= @timeout %>
+<% if @alarm == true %>
+alarms:
+    alarm-memory:
+        label: Memory Usage
+        notification_plan_id: <%= @notification_plan_id %>
+        criteria: |
+<%= @alarm_criteria %>
+<% end %>

@@ -1,0 +1,7 @@
+          if (metric['usage_average'] > <%= new_resource.critical %> ) {
+            return new AlarmStatus(CRITICAL, 'CPU usage is #{usage_average}%, above your critical threshold of <%= new_resource.critical %>%');
+          }
+          if (metric['usage_average'] > <%= new_resource.warning %> ) {
+            return new AlarmStatus(WARNING, 'CPU usage is #{usage_average}%, above your warning threshold of <%= new_resource.warning %>%');
+          }
+            return new AlarmStatus(OK, 'CPU usage is #{usage_average}%, below your warning threshold of <%= new_resource.warning %>%');

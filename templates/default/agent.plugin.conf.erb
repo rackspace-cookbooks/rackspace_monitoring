@@ -1,0 +1,24 @@
+# CHEF MANAGED FILE: DO NOT EDIT
+# Controlling Cookbook: <%= @cookbook_name %>
+#
+
+type: agent.plugin
+label: <%= @label %>
+disabled: <%= @disabled %>
+period: <%= @period %>
+timeout: <%= @timeout %>
+details:
+  file: <%= @plugin_filename %>
+  plugin_timeout: <%= @plugin_timeout %>
+  <%- if @plugin_args %>
+  args: <%= @plugin_args %>
+  <%- end %>
+
+<% if @alarm == true %>
+alarms:
+  alarm-plugin:
+    label: Check from <%= @plugin_filename %>
+    notification_plan_id: <%= @notification_plan_id %>
+    criteria: |
+<%= @alarm_criteria %>
+<% end %>

@@ -1,0 +1,17 @@
+# CHEF MANAGED FILE: DO NOT EDIT
+# Controlling Cookbook: <%= @cookbook_name %>
+#
+
+type: <%= @type %>
+label: <%= @label %>
+disabled: <%= @disabled %>
+period: <%= @period %>
+timeout: <%= @timeout %>
+<% if @alarm == true %>
+alarms:
+  alarm-<%= @type %>:
+    label: <%= @type %> Usage
+        notification_plan_id: <%= @notification_plan_id %>
+        criteria: |
+<%= @alarm_criteria %>
+<% end %>

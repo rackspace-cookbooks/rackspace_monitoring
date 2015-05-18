@@ -1,0 +1,7 @@
+          if (rate(metric['tx_bytes']) > <%= parsed_send_critical %>) {
+            return new AlarmStatus(CRITICAL, 'Network transmit rate is above your critical threshold of <%= parsed_send_critical %>B/s');
+          }
+          if (rate(metric['tx_bytes']) > <%= parsed_send_warning %>) {
+            return new AlarmStatus(WARNING, 'Network transmit rate is above your warning threshold of <%= parsed_send_warning %>B/s');
+          }
+          return new AlarmStatus(OK, 'Network transmit rate is below your warning threshold of <%= parsed_send_warning %>B/s');

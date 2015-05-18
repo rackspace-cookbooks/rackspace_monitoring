@@ -1,0 +1,7 @@
+          if (metric['5m'] > <%= new_resource.critical %> ) {
+            return new AlarmStatus(CRITICAL, '5 minute load average is #{5m}, above your critical threshold of <%= new_resource.critical %>');
+          }
+          if (metric['5m'] > <%= new_resource.warning %> ) {
+            return new AlarmStatus(WARNING, '5 minute load average is #{5m}, above your warning threshold of <%= new_resource.warning %>');
+          }
+          return new AlarmStatus(OK, '5 minute load average is #{5m}, below your warning threshold of <%= new_resource.warning %>');

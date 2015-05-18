@@ -1,0 +1,7 @@
+          if (rate(metric['rx_bytes']) > <%= parsed_recv_critical %> ) {
+            return new AlarmStatus(CRITICAL, 'Network receive rate is above your critical threshold of <%= parsed_recv_critical %>B/s');
+          }
+          if (rate(metric['rx_bytes']) > <%= parsed_recv_warning %> ) {
+            return new AlarmStatus(WARNING, 'Network receive rate is above your warning threshold of <%= parsed_recv_warning %>B/s');
+          }
+          return new AlarmStatus(OK, 'Network receive rate is below your warning threshold of <%= parsed_recv_warning %>B/s');
