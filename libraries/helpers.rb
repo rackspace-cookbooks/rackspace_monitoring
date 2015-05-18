@@ -1,4 +1,4 @@
-module RackspaceCloudMonitoringCookbook
+module RackspaceMonitoringCookbook
   # Helpers for the providers
   module Helpers
     # Get the alarms criteria
@@ -43,7 +43,7 @@ module RackspaceCloudMonitoringCookbook
 
     # Get params after they've been processed/filtered
     module ParsedParams
-      include RackspaceCloudMonitoringCookbook::Helpers::AlarmCriteria
+      include RackspaceMonitoringCookbook::Helpers::AlarmCriteria
 
       def parsed_label
         return new_resource.label if new_resource.label
@@ -179,8 +179,8 @@ module RackspaceCloudMonitoringCookbook
     # Any other helpers (mainly Chef resources)
     module Other
       include Chef::DSL::IncludeRecipe
-      include RackspaceCloudMonitoringCookbook::Helpers::ParsedParams
-      include RackspaceCloudMonitoringCookbook::Helpers::StaticParams
+      include RackspaceMonitoringCookbook::Helpers::ParsedParams
+      include RackspaceMonitoringCookbook::Helpers::StaticParams
 
       def create_agent_conf_d
         directory agent_conf_d do
