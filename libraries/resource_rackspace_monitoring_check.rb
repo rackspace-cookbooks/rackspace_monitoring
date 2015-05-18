@@ -3,7 +3,7 @@ require 'chef/resource/lwrp_base'
 class Chef
   class Resource
     # Resource definition for rackspace_monitoring_check
-    class RackspaceCloudMonitoringCheck < Chef::Resource::LWRPBase
+    class RackspaceMonitoringCheck < Chef::Resource::LWRPBase
       self.resource_name = :rackspace_monitoring_check
       actions :create, :delete, :enable, :disable
       default_action :create

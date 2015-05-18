@@ -3,8 +3,8 @@ require 'chef/resource/lwrp_base'
 class Chef
   class Provider
     # Provider definition for rackspace_monitoring_check
-    class RackspaceCloudMonitoringCheck < Chef::Provider::LWRPBase
-      include RackspaceCloudMonitoringCookbook::Helpers::Other
+    class RackspaceMonitoringCheck < Chef::Provider::LWRPBase
+      include RackspaceMonitoringCookbook::Helpers::Other
 
       use_inline_resources if defined?(use_inline_resources)
 
