@@ -1,6 +1,10 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.2
+-----
+- fixed missing { in memory alarm
+
 1.0.1
 -----
 - Updated some metadatas
