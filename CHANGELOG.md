@@ -1,9 +1,12 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.1
+-----
+- Updated some metadatas
+
 1.0.0
 -----
-
 - Rename cookbook
 - First stable release
 
