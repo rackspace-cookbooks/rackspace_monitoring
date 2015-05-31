@@ -338,4 +338,18 @@ describe 'rackspace_monitoring_check_test::* on Ubuntu 14.04' do
       end
     end
   end
+
+  context 'MySQL check' do
+    context 'rackspace_monitoring_check for MySQL' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(CENTOS_CHECK_OPTS) do |node|
+          node_resources(node)
+        end.converge('rackspace_monitoring_check_test::mysql')
+      end
+      it_behaves_like 'agent config', 'agent.mysql'
+      it 'creates default alarms' do
+        agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.mysql.yaml'
+      end
+    end
+  end
 end
