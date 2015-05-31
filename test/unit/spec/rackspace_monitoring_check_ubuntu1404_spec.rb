@@ -324,4 +324,18 @@ describe 'rackspace_monitoring_check_test::* on Ubuntu 14.04' do
       end
     end
   end
+
+  context 'Apache check' do
+    context 'rackspace_monitoring_check for Apache' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(CENTOS_CHECK_OPTS) do |node|
+          node_resources(node)
+        end.converge('rackspace_monitoring_check_test::apache')
+      end
+      it_behaves_like 'agent config', 'agent.apache'
+      it 'creates default alarms' do
+        agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.apache.yaml'
+      end
+    end
+  end
 end
