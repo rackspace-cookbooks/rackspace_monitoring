@@ -22,6 +22,9 @@ check_files = %w(
   agent.load
   agent.memory
   agent.network.eth0
+  agent.apache
+  agent.mysql
+  agent.redis
 )
 check_files.each do |check|
   # Minimal test as content is tested in Chefspecs

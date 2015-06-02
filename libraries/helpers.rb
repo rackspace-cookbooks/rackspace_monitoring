@@ -29,6 +29,18 @@ module RackspaceMonitoringCookbook
         template_criteria('agent_filesystem')
       end
 
+      def alarm_criteria_agent_apache
+        template_criteria('agent_apache')
+      end
+
+      def alarm_criteria_agent_mysql
+        template_criteria('agent_mysql')
+      end
+
+      def alarm_criteria_agent_redis
+        template_criteria('agent_redis')
+      end
+
       def alarm_criteria_agent_network
         {
           'recv' => template_criteria('agent_network_recv'),
@@ -123,13 +135,14 @@ module RackspaceMonitoringCookbook
 
       def parsed_alarm_criteria
         return new_resource.alarm_criteria if new_resource.alarm_criteria
-        supported_alarm_criteria = %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.network remote.http)
+        supported_alarm_criteria = %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http)
         send('alarm_criteria_' + new_resource.type.gsub('.', '_')) if supported_alarm_criteria.include?(new_resource.type)
       end
 
       def parsed_template_from_type
         return new_resource.template if new_resource.template
-        if %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.network remote.http agent.plugin).include?(new_resource.type)
+        if %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.network
+               remote.http agent.plugin agent.apache agent.mysql agent.redis ).include?(new_resource.type)
           "#{new_resource.type}.conf.erb"
         else
           Chef::Log.info("Using custom monitor for #{new_resource.type}")

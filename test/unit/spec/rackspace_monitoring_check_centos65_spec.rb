@@ -339,6 +339,7 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
       it_behaves_like 'agent config', 'agent.apache'
       it 'creates default alarms' do
         agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.apache.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('Apache loaded status page')
       end
     end
   end
@@ -353,6 +354,8 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
       it_behaves_like 'agent config', 'agent.mysql'
       it 'creates default alarms' do
         agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.mysql.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('admin')
+        expect(chef_run).to render_file(agent_config).with_content('hunter2')
       end
     end
   end
@@ -367,6 +370,8 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
       it_behaves_like 'agent config', 'agent.redis'
       it 'creates default alarms' do
         agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.redis.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('example.com')
+        expect(chef_run).to render_file(agent_config).with_content('Redis responded to INFO in less than 5s')
       end
     end
   end

@@ -35,5 +35,8 @@ suites:
       - recipe[rackspace_monitoring_check_test::load]
       - recipe[rackspace_monitoring_check_test::memory]
       - recipe[rackspace_monitoring_check_test::network]
+      - recipe[rackspace_monitoring_check_test::apache]
+      - recipe[rackspace_monitoring_check_test::mysql]
+      - recipe[rackspace_monitoring_check_test::redis]
       - recipe[rackspace_monitoring_check_test::custom]
       - recipe[rackspace_monitoring_check_test::plugin]
