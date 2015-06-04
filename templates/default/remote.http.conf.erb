@@ -21,7 +21,7 @@ details:
 alarms:
   http-check:
     label: Remote HTTP check on <%= @target_hostname %>
-    notification_plan_id: npTechnicalContactsEmail
+    notification_plan_id: <%= @notification_plan_id %>
     criteria: |
 <%= @alarm_criteria %>
 <% end %>
