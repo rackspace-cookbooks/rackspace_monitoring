@@ -1,6 +1,10 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.5
+-----
+- Ensure a downloaded plugin is executable
+
 1.0.4
 -----
 - Handle parsing filename even if type is not agent.plugin
