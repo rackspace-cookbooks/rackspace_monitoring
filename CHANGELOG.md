@@ -1,6 +1,10 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.4
+-----
+- Handle parsing filename even if type is not agent.plugin
+
 1.0.3
 -----
 - Changed cookbook_name template variable to cookbook
