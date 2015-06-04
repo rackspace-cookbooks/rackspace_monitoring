@@ -87,6 +87,7 @@ class Chef
         end
         Chef::Log.info("Downloading plugin from #{new_resource.plugin_url} to #{plugin_path}/#{parsed_plugin_filename}")
         remote_file "#{plugin_path}/#{parsed_plugin_filename}" do
+          mode 0755
           source new_resource.plugin_url
         end
       end
