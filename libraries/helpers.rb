@@ -114,7 +114,7 @@ module RackspaceMonitoringCookbook
       # Get filename from URI if not defined
       def parsed_plugin_filename
         return new_resource.plugin_filename if new_resource.plugin_filename
-        if new_resource.plugin_url && new_resource.type == 'agent.plugin'
+        if new_resource.plugin_url
           File.basename(URI(new_resource.plugin_url).request_uri)
         elsif new_resource.type == 'agent.plugin'
           fail "You must specify at least a :plugin_filename for #{new_resource.name}"
