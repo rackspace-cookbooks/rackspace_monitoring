@@ -1,6 +1,11 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.3
+-----
+- Changed cookbook_name template variable to cookbook
+- Fixed hard coded notification plan in remote.http check
+
 1.0.2
 -----
 - fixed missing { in memory alarm
