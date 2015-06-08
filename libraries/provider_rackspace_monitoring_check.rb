@@ -48,7 +48,7 @@ class Chef
             variables_with_current_target = parsed_template_variables(disabled)
             # replace 'target' by the current processsed target rather than the whole array
             variables_with_current_target['target'] = target
-            template "#{agent_conf_d}/#{new_resource.type}.#{sanitized_target}.yaml" do
+            template "#{agent_conf_d}/#{parsed_agent_filename}.#{sanitized_target}.yaml" do
               cookbook new_resource.cookbook
               source parsed_template_from_type
               owner 'root'
@@ -59,7 +59,7 @@ class Chef
             end
           end
         else
-          template "#{agent_conf_d}/#{new_resource.type}.yaml" do
+          template "#{agent_conf_d}/#{parsed_agent_filename}.yaml" do
             cookbook new_resource.cookbook
             source parsed_template_from_type
             owner 'root'

@@ -45,6 +45,12 @@ module RackspaceMonitoringCookbook
     module ParsedParams
       include RackspaceMonitoringCookbook::Helpers::AlarmCriteria
 
+      def parsed_agent_filename
+        return new_resource.agent_filename if new_resource.agent_filename
+        # default to type if no filename specified
+        new_resource.type
+      end
+
       def parsed_label
         return new_resource.label if new_resource.label
         "Check for #{new_resource.type}"

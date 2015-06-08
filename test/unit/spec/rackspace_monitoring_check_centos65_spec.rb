@@ -19,6 +19,7 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
           node_resources(node)
           node.set['rackspace_monitoring_check_test']['type'] = 'agent.network'
           node.set['rackspace_monitoring_check_test']['label'] = 'Awesome label, for an awesome check'
+          node.set['rackspace_monitoring_check_test']['agent_filename'] = 'my_agent'
           node.set['rackspace_monitoring_check_test']['alarm'] = true
           node.set['rackspace_monitoring_check_test']['alarm_criteria']['recv'] = 'custom_recv_criteria'
           node.set['rackspace_monitoring_check_test']['alarm_criteria']['send'] = 'custom_send_criteria'
@@ -42,7 +43,7 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
           'custom_send_criteria'
         ]
         params.each do |param|
-          expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.network.dummy_eth.yaml').with_content(param)
+          expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/my_agent.dummy_eth.yaml').with_content(param)
         end
       end
     end

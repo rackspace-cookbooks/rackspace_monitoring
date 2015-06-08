@@ -10,6 +10,7 @@ class Chef
 
       # Common to all checks
       attribute :label, kind_of: String, default: nil
+      attribute :agent_filename, kind_of: String, default: nil
       attribute :alarm, kind_of: [TrueClass, FalseClass], default: false
       attribute :alarm_criteria, kind_of: [String, Hash], default: nil
       attribute :period, kind_of: Fixnum, default: 90
