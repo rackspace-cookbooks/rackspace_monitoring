@@ -1,6 +1,10 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.0.6
+-----
+- added support for agent_filename
+
 1.0.5
 -----
 - Ensure a downloaded plugin is executable
