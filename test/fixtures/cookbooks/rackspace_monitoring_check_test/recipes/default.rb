@@ -3,6 +3,7 @@
 rackspace_monitoring_check node['rackspace_monitoring_check_test']['type'] do
   type node['rackspace_monitoring_check_test']['type']
   label node['rackspace_monitoring_check_test']['label']
+  agent_filename node['rackspace_monitoring_check_test']['agent_filename']
   alarm node['rackspace_monitoring_check_test']['alarm']
   alarm_criteria node['rackspace_monitoring_check_test']['alarm_criteria']
   period node['rackspace_monitoring_check_test']['period']
