@@ -76,6 +76,7 @@ The :create action handles package installation. The internal configuration file
 #### Parameters
 ##### Common to all checks
 * `:label` - optional - A friendly label for a check - Default : *Check for `:type`*
+* `:agent_filename` - optional - File name used to create the agent configuration - Default : same as `:type`. If you use the same agent type more than once in a recipe then you should set `:agent_filename`, as otherwise your agents configuration will conflict as they will have the same filename.
 * `:alarm` - optional - Enable or disable the alarm on a check - Default : false
 * `:alarm_criteria` - optional - Criteria used to trigger alarms - Default : agent specific `./libaries/helpers.rb` => `parsed_alarm_criteria`
 * `:period` - optional - The period in seconds for a check. The value must be greater than the minimum period set on your account -Default : 90
