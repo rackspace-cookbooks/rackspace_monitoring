@@ -5,8 +5,8 @@
 type: agent.network
 label: <%= @label %>
 disabled: <%= @disabled %>
-period: <%= @period %>
-timeout: <%= @timeout %>
+period: <%= @period.to_i %>
+timeout: <%= @timeout.to_i %>
 details:
   target: <%= @target %>
 <% if @alarm == true %>

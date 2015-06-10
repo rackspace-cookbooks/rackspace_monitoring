@@ -6,8 +6,8 @@
 type: remote.http
 label: <%= @label %>
 disabled: <%= @disabled %>
-period: <%= @period %>
-timeout: <%= @timeout %>
+period: <%= @period.to_i %>
+timeout: <%= @timeout.to_i %>
 target_hostname: <%= @target_hostname %>
 monitoring_zones_poll:
   - mzdfw
