@@ -5,8 +5,8 @@
 type: agent.cpu
 label: <%= @label %>
 disabled: <%= @disabled %>
-period: <%= @period %>
-timeout: <%= @timeout %>
+period: <%= @period.to_i %>
+timeout: <%= @timeout.to_i %>
 <% if @alarm == true %>
 alarms:
     alarm-cpu:

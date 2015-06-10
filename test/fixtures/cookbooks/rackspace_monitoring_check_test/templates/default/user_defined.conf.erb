@@ -6,8 +6,8 @@
 type: remote.ping
 label: Remote ping check on <%= @target_hostname %>
 disabled: <%= @disabled %>
-period: <%= @period %>
-timeout: <%= @timeout %>
+period: <%= @period.to_i %>
+timeout: <%= @timeout.to_i %>
 target_hostname: <%= @target_hostname %>
 monitoring_zones_poll:
   - mzdfw
@@ -23,7 +23,7 @@ alarms:
     label: Remote Ping check on <%= @target_hostname %>
     notification_plan_id: npTechnicalContactsEmail
     criteria: |
-      if (metric['available'] < <%= @critical %> ) {
-        return new AlarmStatus(CRITICAL, 'Ping success is bellow #{available}%, above your critical threshold of <%= @critical %>%');
+      if (metric['available'] < <%= @critical.to_i %> ) {
+        return new AlarmStatus(CRITICAL, 'Ping success is bellow #{available}%, above your critical threshold of <%= @critical.to_i %>%');
       }
 <% end %>
