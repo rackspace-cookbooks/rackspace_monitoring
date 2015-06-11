@@ -5,8 +5,8 @@
 type: <%= @type %>
 label: <%= @label %>
 disabled: <%= @disabled %>
-period: <%= @period.to_i %>
-timeout: <%= @timeout.to_i %>
+period: <%= @period %>
+timeout: <%= @timeout %>
 <% if @alarm == true %>
 alarms:
   alarm-<%= @type %>:
