@@ -84,7 +84,7 @@ The :create action handles package installation. The internal configuration file
 * `:critical` - optional - Threshold for the default alarm criteria - Default : 95
 * `:warning` - optional - Threshold for the default alarm criteria - Default : 90
 * `:notification_plan_id` - optional - Notification plan for the alarms - Default : npTechnicalContactsEmail
-* `:variables` - optional - Additional variables you want to use in the template.`variable_name => 'value'`. It will allow to add attributes to the agent configuration if you need more than the default ones. [Here is an example](https://github.com/rackspace-cookbooks/rackspace_monitoring/blob/master/test/fixtures/cookbooks/rackspace_monitoring_check_test/recipes/http.rb#L8-L9) for `remote.http`. If you want to create your own `:template` you can use all the `:variables` with `@variable_name`. You are responsible for ensuring variables are converted from a String to an Integer, where appropriate, in your templates (e.g. send_warning, recv_warning, etc).
+* `:variables` - optional - Additional variables you want to use in the template.`variable_name => 'value'`. It will allow to add attributes to the agent configuration if you need more than the default ones. [Here is an example](https://github.com/rackspace-cookbooks/rackspace_monitoring/blob/master/test/fixtures/cookbooks/rackspace_monitoring_check_test/recipes/http.rb#L8-L9) for `remote.http`. If you want to create your own `:template` you can use all the `:variables` with `@variable_name`.
 
 ##### Used on some checks (filesystem/disk/network)
 
@@ -154,8 +154,8 @@ Then you can have your own template :
 type: remote.ping
 label: Remote ping check on <%= @target_hostname %>
 disabled: <%= @disabled %>
-period: <%= @period.to_i %>
-timeout: <%= @timeout.to_i %>
+period: <%= @period %>
+timeout: <%= @timeout %>
 target_hostname: <%= @target_hostname %>
 monitoring_zones_poll:
   - mzdfw

@@ -5,11 +5,11 @@
 type: agent.plugin
 label: <%= @label %>
 disabled: <%= @disabled %>
-period: <%= @period.to_i %>
-timeout: <%= @timeout.to_i %>
+period: <%= @period %>
+timeout: <%= @timeout %>
 details:
   file: <%= @plugin_filename %>
-  plugin_timeout: <%= @plugin_timeout.to_i %>
+  plugin_timeout: <%= @plugin_timeout %>
   <%- if @plugin_args %>
   args: <%= @plugin_args %>
   <%- end %>
