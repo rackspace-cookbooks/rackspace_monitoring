@@ -329,4 +329,51 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
       end
     end
   end
+
+  context 'Apache check' do
+    context 'rackspace_monitoring_check for Apache' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(CENTOS_CHECK_OPTS) do |node|
+          node_resources(node)
+        end.converge('rackspace_monitoring_check_test::apache')
+      end
+      it_behaves_like 'agent config', 'agent.apache'
+      it 'creates default alarms' do
+        agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.apache.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('Apache loaded status page')
+      end
+    end
+  end
+
+  context 'MySQL check' do
+    context 'rackspace_monitoring_check for MySQL' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(CENTOS_CHECK_OPTS) do |node|
+          node_resources(node)
+        end.converge('rackspace_monitoring_check_test::mysql')
+      end
+      it_behaves_like 'agent config', 'agent.mysql'
+      it 'creates default alarms' do
+        agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.mysql.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('admin')
+        expect(chef_run).to render_file(agent_config).with_content('hunter2')
+      end
+    end
+  end
+
+  context 'Redis check' do
+    context 'rackspace_monitoring_check for Redis' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(CENTOS_CHECK_OPTS) do |node|
+          node_resources(node)
+        end.converge('rackspace_monitoring_check_test::redis')
+      end
+      it_behaves_like 'agent config', 'agent.redis'
+      it 'creates default alarms' do
+        agent_config = '/etc/rackspace-monitoring-agent.conf.d/agent.redis.yaml'
+        expect(chef_run).to render_file(agent_config).with_content('example.com')
+        expect(chef_run).to render_file(agent_config).with_content('Redis responded to INFO in less than 5s')
+      end
+    end
+  end
 end
