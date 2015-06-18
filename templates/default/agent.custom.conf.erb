@@ -11,7 +11,7 @@ timeout: <%= @timeout %>
 alarms:
   alarm-<%= @type %>:
     label: <%= @type %> Usage
-        notification_plan_id: <%= @notification_plan_id %>
-        criteria: |
+    notification_plan_id: <%= @notification_plan_id %>
+    criteria: |
 <%= @alarm_criteria %>
 <% end %>
