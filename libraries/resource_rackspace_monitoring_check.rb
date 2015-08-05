@@ -30,6 +30,7 @@ class Chef
       attribute :plugin_url, kind_of: String, default: nil
       attribute :plugin_args, kind_of: Array, default: nil
       attribute :plugin_filename, kind_of: String, default: nil
+      attribute :plugin_cookbook, kind_of: String, default: nil
       attribute :plugin_timeout, kind_of: Fixnum, default: 30
       # Template config
       attribute :cookbook, kind_of: String, default: 'rackspace_monitoring'

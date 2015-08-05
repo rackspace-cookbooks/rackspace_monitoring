@@ -178,6 +178,7 @@ module RackspaceMonitoringCookbook
           plugin_filename: parsed_plugin_filename,
           # Using inspect so it dumps a string representing an array
           plugin_args: new_resource.plugin_args.inspect,
+          plugin_cookbook: new_resource.plugin_cookbook,
           plugin_timeout: new_resource.plugin_timeout,
           variables: new_resource.variables
         }
