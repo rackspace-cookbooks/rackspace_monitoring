@@ -57,6 +57,7 @@ The :create action handles package installation. The internal configuration file
 * `cloud_credentials_api_key` - Your cloud [api-key](http://www.rackspace.com/knowledge_center/article/view-and-reset-your-api-key)
 * `package_name` - Rackspace monitoring agent package name (default to `rackspace-monitoring-agent`)
 * `package_action` - Which action to run when `:create` default to `install`
+* `create_entity` - Automatically create an Entity during `:create` to associate with Checks (default to `false`)
 
 #### Actions
 
