@@ -142,7 +142,7 @@ module RackspaceMonitoringCookbook
       def parsed_alarm_criteria
         return new_resource.alarm_criteria if new_resource.alarm_criteria
         supported_alarm_criteria = %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http)
-        send('alarm_criteria_' + new_resource.type.gsub('.', '_')) if supported_alarm_criteria.include?(new_resource.type)
+        send('alarm_criteria_' + new_resource.type.tr('.', '_')) if supported_alarm_criteria.include?(new_resource.type)
       end
 
       def parsed_template_from_type
