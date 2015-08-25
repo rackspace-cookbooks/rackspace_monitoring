@@ -99,9 +99,10 @@ The :create action handles package installation. The internal configuration file
 * `:recv_critical` - required for network only - Threshold for the default send alarm criteria - Default : 24903680
 
 ##### Plugins attributes
-* `:plugin_url` - optional if `:plugin_filename` has been provided - Url from where to download a plugin. i.e https://raw.githubusercontent.com/racker/rackspace-monitoring-agent-plugins-contrib/master/chef_node_checkin.py
+* `:plugin_url` - optional if `:plugin_filename` has been provided, ignored if `:plugin_cookbook` is provided - Url from where to download a plugin. i.e https://raw.githubusercontent.com/racker/rackspace-monitoring-agent-plugins-contrib/master/chef_node_checkin.py
 * `:plugin_args` - optional - Arguments to pass to the plugin (Array)
 * `:plugin_filename` - optional if `:plugin_url` has been provided, mandatory otherwise.
+* `:plugin_cookbook` - optional - Cookbook to load a plugin template from. i.e wrapper or base site-cookbooks - Default : nil
 * `:plugin_timeout` - optional - The timeout for the plugin execution - Default : 30
 
 ##### Template config
