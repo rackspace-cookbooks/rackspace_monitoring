@@ -1,6 +1,14 @@
 rackspace_monitoring CHANGELOG
 ==================
 
+1.1.0
+-----
+- #18 - add plugin_cookbook as alternate way to install agent plugins
+- #21 - fix some rubocop and other style issues
+- #6  - add plugin_cookbook as alternate way to install agent plugins
+- #15 - fix agent.custom template yaml syntax
+- #12 - Ensure templates correctly use int, not string
+
 1.0.6
 -----
 - added support for agent_filename
