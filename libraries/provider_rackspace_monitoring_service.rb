@@ -23,7 +23,7 @@ class Chef
 
         # Set up rackspace-monitoring-agent
         execute 'agent-setup-cloud' do
-          command "rackspace-monitoring-agent --setup --username #{parsed_cloud_credentials_username} --apikey #{parsed_cloud_credentials_api_key}"
+          command "rackspace-monitoring-agent --setup --username #{parsed_cloud_credentials_username} --apikey #{parsed_cloud_credentials_api_key} --auto-create-entity"
           action 'run'
           # the filesize is zero if the agent has not been configured
           only_if { ::File.size?('/etc/rackspace-monitoring-agent.cfg').nil? }
