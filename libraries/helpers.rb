@@ -220,6 +220,16 @@ module RackspaceMonitoringCookbook
             gpgcheck true
             action :add
           end
+        elsif node['platform'] == 'debian'
+
+
+          apt_repository 'monitoring' do
+            uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['codename']}-x86_64"
+            distribution 'cloudmonitoring'
+            components ['main']
+            key 'https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc'
+            action :add
+          end
         else
           apt_repository 'monitoring' do
             uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['release']}-x86_64"
