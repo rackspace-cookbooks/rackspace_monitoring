@@ -243,6 +243,7 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
         expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.filesystem.slash.yaml').with_content('target: /')
         expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.filesystem.boot.yaml').with_content('target: /boot')
         expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.filesystem.home.yaml').with_content('target: /home')
+        expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.filesystem.vagrant.yaml').with_content("target:\n")
       end
     end
     context 'rackspace_monitoring_check with custom target' do
