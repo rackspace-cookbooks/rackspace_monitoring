@@ -243,7 +243,7 @@ module RackspaceMonitoringCookbook
 
       def target_filesystem
         target = []
-        excluded_fs = %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore)
+        excluded_fs = %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore vboxsf)
         unless node['filesystem'].nil?
           node['filesystem'].each do |key, data|
             next if data['percent_used'].nil? || data['fs_type'].nil?
