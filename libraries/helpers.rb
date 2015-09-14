@@ -177,7 +177,8 @@ module RackspaceMonitoringCookbook
           recv_critical: parsed_recv_critical,
           plugin_filename: parsed_plugin_filename,
           # Using inspect so it dumps a string representing an array
-          plugin_args: new_resource.plugin_args.inspect,
+          plugin_args: new_resource.plugin_args ? new_resource.plugin_args.inspect : nil,
+          plugin_cookbook: new_resource.plugin_cookbook,
           plugin_timeout: new_resource.plugin_timeout,
           variables: new_resource.variables
         }
@@ -219,6 +220,16 @@ module RackspaceMonitoringCookbook
             gpgcheck true
             action :add
           end
+        elsif node['platform'] == 'debian'
+          package 'apt-transport-https'
+
+          apt_repository 'monitoring' do
+            uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['codename']}-x86_64"
+            distribution 'cloudmonitoring'
+            components ['main']
+            key 'https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc'
+            action :add
+          end
         else
           apt_repository 'monitoring' do
             uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['release']}-x86_64"
@@ -232,7 +243,7 @@ module RackspaceMonitoringCookbook
 
       def target_filesystem
         target = []
-        excluded_fs = %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore)
+        excluded_fs = %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore vboxsf)
         unless node['filesystem'].nil?
           node['filesystem'].each do |key, data|
             next if data['percent_used'].nil? || data['fs_type'].nil?

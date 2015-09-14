@@ -14,8 +14,8 @@ class Chef
 
       action :create do
         define_rackspace_monitoring_agent_service
-        # Download plugin if the parameter is set
-        download_plugin if new_resource.plugin_url
+        # Download plugin if either the url or cookbook parameter is set
+        download_plugin if new_resource.plugin_url || new_resource.plugin_cookbook
         generate_agent_config(false, parsed_target)
       end
 
@@ -85,10 +85,19 @@ class Chef
           action :create
           recursive true
         end
-        Chef::Log.info("Downloading plugin from #{new_resource.plugin_url} to #{plugin_path}/#{parsed_plugin_filename}")
-        remote_file "#{plugin_path}/#{parsed_plugin_filename}" do
-          mode 0755
-          source new_resource.plugin_url
+        if new_resource.plugin_cookbook
+          Chef::Log.info("Installing plugin from #{new_resource.plugin_cookbook} to #{plugin_path}/#{parsed_plugin_filename}")
+          cookbook_file "#{plugin_path}/#{parsed_plugin_filename}" do
+            cookbook new_resource.plugin_cookbook
+            mode 0755
+            source new_resource.parsed_plugin_filename
+          end
+        else
+          Chef::Log.info("Downloading plugin from #{new_resource.plugin_url} to #{plugin_path}/#{parsed_plugin_filename}")
+          remote_file "#{plugin_path}/#{parsed_plugin_filename}" do
+            mode 0755
+            source new_resource.plugin_url
+          end
         end
       end
 

@@ -10,9 +10,9 @@ timeout: <%= @timeout %>
 details:
   file: <%= @plugin_filename %>
   plugin_timeout: <%= @plugin_timeout %>
-  <%- if @plugin_args %>
+  <% if @plugin_args %>
   args: <%= @plugin_args %>
-  <%- end %>
+  <% end %>
 
 <% if @alarm == true %>
 alarms:

@@ -25,7 +25,7 @@ shared_examples_for 'rackspace monitoring agent set up' do |platform|
     expect(chef_run).to create_directory('/etc/rackspace-monitoring-agent.conf.d')
   end
   it 'executes rackspace-monitoring-agent setup script' do
-    expect(chef_run).to run_execute('agent-setup-cloud').with(command: 'rackspace-monitoring-agent --setup --username dummyusername --apikey dummyapikey')
+    expect(chef_run).to run_execute('agent-setup-cloud').with(command: 'rackspace-monitoring-agent --setup --username dummyusername --apikey dummyapikey --auto-create-entity')
   end
 end
 
