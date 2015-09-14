@@ -11,9 +11,8 @@ details:
   file: <%= @plugin_filename %>
   plugin_timeout: <%= @plugin_timeout %>
   <%- if @plugin_args %>
-  args: <%= @plugin_args %>
+  args: <%= @plugin_args != 'nil' %>
   <%- end %>
-
 <% if @alarm == true %>
 alarms:
   alarm-plugin:
