@@ -1,5 +1,8 @@
 rackspace_monitoring CHANGELOG
 ==================
+1.1.1
+-----
+- #29, #30 - fix the interpretation of plugin arguments, fix template escapes
 
 1.1.0
 -----
