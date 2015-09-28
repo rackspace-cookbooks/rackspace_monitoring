@@ -80,7 +80,8 @@ module RackspaceMonitoringCookbook
 
       def parsed_target_hostname
         return new_resource.target_hostname if new_resource.target_hostname
-        node['cloud']['public_ipv4']
+        require 'chef/sugar'
+        Chef::Sugar::Cloud.cloud?(@node) ? node['public_ipv4'] : node['ipaddress']
       end
 
       def parsed_target

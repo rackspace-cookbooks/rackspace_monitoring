@@ -12,3 +12,4 @@ source_url 'https://github.com/rackspace-cookbooks/rackspace_monitoring' if resp
 
 depends 'apt'
 depends 'yum'
+depends 'chef-sugar'
