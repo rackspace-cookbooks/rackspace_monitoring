@@ -27,3 +27,10 @@ shared_examples_for 'raise error about missing parameters' do
     expect { chef_run }.to raise_error(RuntimeError)
   end
 end
+
+shared_examples_for 'agent set up without entity' do
+  it 'runs agent setup with no-entity flag' do
+    agent_command = 'rackspace-monitoring-agent --setup --username dummyusername --apikey dummyapikey --no-entity'
+    expect(chef_run).to run_execute('agent-setup-cloud').with(command: agent_command)
+  end
+end

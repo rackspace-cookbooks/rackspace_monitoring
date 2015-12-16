@@ -21,7 +21,7 @@ class Chef
           action new_resource.package_action
         end
 
-        auto_create_entity = new_resource.create_entity ? '--auto-create-entity' : ''
+        auto_create_entity = new_resource.create_entity ? '--auto-create-entity' : '--no-entity'
 
         # Set up rackspace-monitoring-agent
         execute 'agent-setup-cloud' do

@@ -39,5 +39,14 @@ describe 'rackspace_monitoring_service_test::default on Ubuntu 14.04' do
       end
       it_behaves_like 'raise error about missing parameters'
     end
+    context 'without an entity' do
+      cached(:chef_run) do
+        ChefSpec::SoloRunner.new(UBUNTU1204_SERVICE_OPTS) do |node|
+          node_resources(node)
+          node.set['rackspace_monitoring']['create_entity'] = false
+        end.converge('rackspace_monitoring_service_test::default')
+      end
+      it_behaves_like 'agent set up without entity'
+    end
   end
 end
