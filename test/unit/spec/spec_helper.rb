@@ -13,6 +13,7 @@ def stub_resources
 end
 
 def node_resources(node)
+  node.set['rackspace_monitoring']['create_entity'] = true
   node.set['rackspace_monitoring']['cloud_credentials_username'] = 'dummyusername'
   node.set['rackspace_monitoring']['cloud_credentials_api_key'] = 'dummyapikey'
   node.set['cloud']['local_ipv4'] = '10.0.0.1'

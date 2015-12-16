@@ -225,11 +225,11 @@ module RackspaceMonitoringCookbook
         end
       end
 
-      def configure_package_repositories
+      def configure_package_repositories(channel)
         if %w(rhel fedora).include? node['platform_family']
           yum_repository 'monitoring' do
             description 'Rackspace Cloud Monitoring agent repo'
-            baseurl "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['platform_version'][0]}-x86_64"
+            baseurl "https://#{channel}.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['platform_version'][0]}-x86_64"
             gpgkey "https://monitoring.api.rackspacecloud.com/pki/agent/#{node['platform']}-#{node['platform_version'][0]}.asc"
             enabled true
             gpgcheck true
@@ -239,7 +239,7 @@ module RackspaceMonitoringCookbook
           package 'apt-transport-https'
 
           apt_repository 'monitoring' do
-            uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['codename']}-x86_64"
+            uri "https://#{channel}.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['codename']}-x86_64"
             distribution 'cloudmonitoring'
             components ['main']
             key 'https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc'
@@ -247,7 +247,7 @@ module RackspaceMonitoringCookbook
           end
         else
           apt_repository 'monitoring' do
-            uri "https://stable.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['release']}-x86_64"
+            uri "https://#{channel}.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['lsb']['release']}-x86_64"
             distribution 'cloudmonitoring'
             components ['main']
             key 'https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc'

@@ -12,6 +12,7 @@ class Chef
       attribute :cloud_credentials_api_key, kind_of: String, default: nil
       attribute :package_action, kind_of: Symbol, default: :install
       attribute :package_name, kind_of: String, default: 'rackspace-monitoring-agent'
+      attribute :package_channel, kind_of: String, default: 'stable', regex: /^(un)?stable$/
       attribute :create_entity, kind_of: [TrueClass, FalseClass], default: false
     end
   end

@@ -14,7 +14,7 @@ class Chef
 
       action :create do
         # Yum, Apt, etc. From helpers.rb
-        configure_package_repositories
+        configure_package_repositories(new_resource.package_channel)
 
         # Software installation
         package new_resource.package_name do
