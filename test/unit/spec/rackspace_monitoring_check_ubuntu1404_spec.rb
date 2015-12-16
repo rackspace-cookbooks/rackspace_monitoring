@@ -186,10 +186,16 @@ describe 'rackspace_monitoring_check_test::* on Ubuntu 14.04' do
         end.converge('rackspace_monitoring_check_test::default')
       end
       it 'creates a config for each detected target' do
-        expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.disk.vda.yaml').with_content('target: /dev/vda')
+        find_disks(chef_run.node).each do |disk|
+          config_file = "/etc/rackspace-monitoring-agent.conf.d/agent.disk.#{File.basename(disk)}.yaml"
+          expect(chef_run).to render_file(config_file).with_content("target: #{disk}")
+        end
       end
       it 'creates an alarm criteria' do
-        expect(chef_run).to render_file('/etc/rackspace-monitoring-agent.conf.d/agent.disk.vda.yaml').with_content('An agent.disk alarm criteria')
+        find_disks(chef_run.node).each do |disk|
+          config_file = "/etc/rackspace-monitoring-agent.conf.d/agent.disk.#{File.basename(disk)}.yaml"
+          expect(chef_run).to render_file(config_file).with_content('An agent.disk alarm criteria')
+        end
       end
     end
     context 'rackspace_monitoring_check for disk with a target but without an alarm criteria' do

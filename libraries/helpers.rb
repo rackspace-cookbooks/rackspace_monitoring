@@ -201,6 +201,14 @@ module RackspaceMonitoringCookbook
       def plugin_path
         '/usr/lib/rackspace-monitoring-agent/plugins'
       end
+
+      def excluded_fs
+        %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore vboxsf)
+      end
+
+      def disks_pattern
+        %r{^/dev/(sd|vd|xvd|hd)[a-z]}
+      end
     end
 
     # Any other helpers (mainly Chef resources)
@@ -250,7 +258,6 @@ module RackspaceMonitoringCookbook
 
       def target_filesystem
         target = []
-        excluded_fs = %(tmpfs devtmpfs devpts proc mqueue cgroup efivars sysfs sys securityfs configfs fusectl pstore vboxsf)
         unless node['filesystem'].nil?
           node['filesystem'].each do |key, data|
             next if data['percent_used'].nil? || data['fs_type'].nil?
@@ -265,7 +272,7 @@ module RackspaceMonitoringCookbook
       def target_disk
         target = []
         node['filesystem'].each do |key, data|
-          if key =~ %r{^/dev/(sd|vd|xvd|hd)[a-z]}
+          if key =~ disks_pattern
             Chef::Log.warn("Found disk : #{key}")
             target << key
           end
