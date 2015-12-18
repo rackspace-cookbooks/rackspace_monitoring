@@ -15,7 +15,7 @@ provisioner:
       public_ipv4: 8.0.0.1
 
 platforms:
-  - name: centos-6.6
+  - name: centos-6.7
     run_list:
     - recipe[yum]
   - name: ubuntu-12.04
