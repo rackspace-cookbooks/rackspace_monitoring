@@ -79,15 +79,10 @@ module RackspaceMonitoringCookbook
       end
 
       def parsed_target_hostname
-        if new_resource.target_hostname
-          new_resource.target_hostname
-        elsif node && node.key?('cloud')
-          node['cloud']['public_ipv4']
-        elsif node
-          node['ipaddress']
-        else
-          fail 'No node object, cannot determine hostname or ip'
-        end
+        return new_resource.target_hostname if new_resource.target_hostname
+        return node['cloud']['public_ipv4'] if node && node.key?('cloud')
+        return node['ipaddress'] if node
+        fail 'No node object, cannot determine hostname or ip'
       end
 
       def parsed_target

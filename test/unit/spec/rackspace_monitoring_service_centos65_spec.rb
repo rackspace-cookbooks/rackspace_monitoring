@@ -10,7 +10,7 @@ describe 'rackspace_monitoring_service_test::default on Centos 6.5' do
     platform: 'centos',
     version: '6.5',
     step_into: 'rackspace_monitoring_service'
-  }
+  }.freeze
 
   cached(:chef_run) do
     ChefSpec::SoloRunner.new(CENTOS_SERVICE_OPTS) do |node|

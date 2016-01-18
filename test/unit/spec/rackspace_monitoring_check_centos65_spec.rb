@@ -10,7 +10,7 @@ describe 'rackspace_monitoring_check_test::* on Centos 6.5' do
     platform: 'centos',
     version: '6.5',
     step_into: ['rackspace_monitoring_check']
-  }
+  }.freeze
 
   context 'Any check' do
     context 'rackspace_monitoring_check built from parameters' do
