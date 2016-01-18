@@ -10,7 +10,7 @@ describe 'rackspace_monitoring_check_test::* on Ubuntu 14.04' do
     platform: 'ubuntu',
     version: '14.04',
     step_into: ['rackspace_monitoring_check']
-  }
+  }.freeze
 
   context 'Any check' do
     context 'rackspace_monitoring_check built from parameters' do

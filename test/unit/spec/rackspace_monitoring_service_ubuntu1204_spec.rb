@@ -10,7 +10,7 @@ describe 'rackspace_monitoring_service_test::default on Ubuntu 12.04' do
     platform: 'ubuntu',
     version: '12.04',
     step_into: 'rackspace_monitoring_service'
-  }
+  }.freeze
 
   cached(:chef_run) do
     ChefSpec::SoloRunner.new(UBUNTU1204_SERVICE_OPTS) do |node|
