@@ -14,7 +14,7 @@ module RackspaceMonitoringCookbook
       end
 
       def alarm_criteria_agent_disk
-        fail 'There is no relevant default alarm_criteria for agent.disk, please provide :alarm_criteria' if new_resource.alarm && new_resource.target
+        raise 'There is no relevant default alarm_criteria for agent.disk, please provide :alarm_criteria' if new_resource.alarm && new_resource.target
       end
 
       def alarm_criteria_agent_cpu
@@ -70,19 +70,19 @@ module RackspaceMonitoringCookbook
 
       def parsed_cloud_credentials_username
         return new_resource.cloud_credentials_username if new_resource.cloud_credentials_username
-        fail 'Cloud credential username missing, cannot setup cloud-monitoring (please set :cloud_credentials_username)'
+        raise 'Cloud credential username missing, cannot setup cloud-monitoring (please set :cloud_credentials_username)'
       end
 
       def parsed_cloud_credentials_api_key
         return new_resource.cloud_credentials_api_key if new_resource.cloud_credentials_api_key
-        fail 'Cloud credential api_key missing, cannot setup cloud-monitoring (please set :cloud_credentials_api_key)'
+        raise 'Cloud credential api_key missing, cannot setup cloud-monitoring (please set :cloud_credentials_api_key)'
       end
 
       def parsed_target_hostname
         return new_resource.target_hostname if new_resource.target_hostname
         return node['cloud']['public_ipv4'] if node && node.key?('cloud')
         return node['ipaddress'] if node
-        fail 'No node object, cannot determine hostname or ip'
+        raise 'No node object, cannot determine hostname or ip'
       end
 
       def parsed_target
@@ -113,22 +113,22 @@ module RackspaceMonitoringCookbook
 
       def parsed_send_warning
         return new_resource.send_warning if new_resource.send_warning
-        fail "You must define :send_warning for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
+        raise "You must define :send_warning for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
       end
 
       def parsed_send_critical
         return new_resource.send_critical if new_resource.send_critical
-        fail "You must define :send_critical for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
+        raise "You must define :send_critical for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
       end
 
       def parsed_recv_warning
         return new_resource.recv_warning if new_resource.recv_warning
-        fail "You must define :recv_warning for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
+        raise "You must define :recv_warning for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
       end
 
       def parsed_recv_critical
         return new_resource.recv_critical if new_resource.recv_critical
-        fail "You must define :recv_critical for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
+        raise "You must define :recv_critical for #{new_resource.type} if you enabled alarm" if new_resource.type == 'agent.network' && new_resource.alarm
       end
 
       # Get filename from URI if not defined
@@ -137,7 +137,7 @@ module RackspaceMonitoringCookbook
         if new_resource.plugin_url
           File.basename(URI(new_resource.plugin_url).request_uri)
         elsif new_resource.type == 'agent.plugin'
-          fail "You must specify at least a :plugin_filename for #{new_resource.name}"
+          raise "You must specify at least a :plugin_filename for #{new_resource.name}"
         end
       end
 
