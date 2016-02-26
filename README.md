@@ -104,7 +104,7 @@ The :create action handles package installation. The internal configuration file
 * `:plugin_args` - optional - Arguments to pass to the plugin (Array)
 * `:plugin_filename` - optional if `:plugin_url` has been provided, mandatory otherwise.
 * `:plugin_cookbook` - optional - Cookbook to load a plugin template from. i.e wrapper or base site-cookbooks - Default : nil
-* `:plugin_timeout` - optional - The timeout for the plugin execution - Default : 30
+* `:plugin_timeout` - optional - The timeout for the plugin execution in milliseconds - Default : 60000
 
 ##### Template config
 
