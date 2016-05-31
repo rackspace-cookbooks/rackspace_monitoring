@@ -1,6 +1,6 @@
 machine:
   ruby:
-    version: 2.2.3
+    version: 2.3.0
   environment:
     KITCHEN_LOCAL_YAML: .kitchen.cloud.yml
 
@@ -9,6 +9,7 @@ dependencies:
     - "~/bundle"
   pre:
     - ssh-keygen -f ~/.ssh/id_rsa -q -N ""
+    - gem update bundler # for chef
   override:
     - bundle install --path=~/bundle --jobs=4 --retry=3:
         timeout: 600
