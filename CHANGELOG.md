@@ -1,5 +1,11 @@
 rackspace_monitoring CHANGELOG
 ==================
+1.1.2
+-----
+- #37 - updates to the agent.plugin template
+- #33 - Adds a package_channel attribute to rackspace_monitoring_service to allow choosing the unstable channel. I deliberately left that out of the docs as I don't want to encourage use of unstable, but it's useful for testing the cookbook against upcoming agent releases. Prevents hanging the Chef run while the agent prompts for input if create_entity is false on a rackspace_monitoring_service resource. The --no-entity flag was added in version 2.2.10. Older versions will ignore the flag.
+- #31 - update logic behind identifying best IP address
+
 1.1.1
 -----
 - #29, #30 - fix the interpretation of plugin arguments, fix template escapes
