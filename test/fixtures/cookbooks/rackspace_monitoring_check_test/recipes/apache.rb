@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # comments!
 
 rackspace_monitoring_check 'agent.apache' do

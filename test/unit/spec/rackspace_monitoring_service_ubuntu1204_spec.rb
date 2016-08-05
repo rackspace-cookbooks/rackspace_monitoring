@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'spec_helper'
 
 describe 'rackspace_monitoring_service_test::default on Ubuntu 12.04' do

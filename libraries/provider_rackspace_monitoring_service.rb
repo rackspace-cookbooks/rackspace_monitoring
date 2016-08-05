@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'chef/resource/lwrp_base'
 
 class Chef
@@ -47,7 +48,7 @@ class Chef
           path agent_conf_d
           owner 'root'
           group 'root'
-          mode 00755
+          mode 0o0755
           recursive true
           action :delete
         end

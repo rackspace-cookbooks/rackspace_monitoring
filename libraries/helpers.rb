@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module RackspaceMonitoringCookbook
   # Helpers for the providers
   module Helpers
@@ -143,7 +144,7 @@ module RackspaceMonitoringCookbook
 
       def parsed_alarm_criteria
         return new_resource.alarm_criteria if new_resource.alarm_criteria
-        supported_alarm_criteria = %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http)
+        supported_alarm_criteria = %w(agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http)
         send('alarm_criteria_' + new_resource.type.tr('.', '_')) if supported_alarm_criteria.include?(new_resource.type)
       end
 
@@ -216,7 +217,7 @@ module RackspaceMonitoringCookbook
         directory agent_conf_d do
           owner 'root'
           group 'root'
-          mode 00755
+          mode 0o0755
         end
       end
 
