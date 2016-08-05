@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 shared_examples_for 'rackspace monitoring agent set up' do |platform|
   it 'calls rackspace_monitoring_service resource' do
     expect(chef_run).to create_rackspace_monitoring_service('default')

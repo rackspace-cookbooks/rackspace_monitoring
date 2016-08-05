@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'chef/resource/lwrp_base'
 
 class Chef
@@ -89,13 +90,13 @@ class Chef
           Chef::Log.info("Installing plugin from #{new_resource.plugin_cookbook} to #{plugin_path}/#{parsed_plugin_filename}")
           cookbook_file "#{plugin_path}/#{parsed_plugin_filename}" do
             cookbook new_resource.plugin_cookbook
-            mode 0755
+            mode 0o755
             source new_resource.parsed_plugin_filename
           end
         else
           Chef::Log.info("Downloading plugin from #{new_resource.plugin_url} to #{plugin_path}/#{parsed_plugin_filename}")
           remote_file "#{plugin_path}/#{parsed_plugin_filename}" do
-            mode 0755
+            mode 0o755
             source new_resource.plugin_url
           end
         end
