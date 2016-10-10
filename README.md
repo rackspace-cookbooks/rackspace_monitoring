@@ -1,4 +1,4 @@
-[![Circle CI](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring.svg?style=svg)](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring)
+[![Circle CI](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring.svg?style=svg)](https://circleci.com/gh/rackspace-cookbooks/rackspace_monitoring)[![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/)
 
 # rackspace_monitoring-cookbook
 
