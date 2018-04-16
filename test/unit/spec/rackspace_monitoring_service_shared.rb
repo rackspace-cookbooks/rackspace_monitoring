@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 shared_examples_for 'rackspace monitoring agent set up' do |platform|
   it 'calls rackspace_monitoring_service resource' do
     expect(chef_run).to create_rackspace_monitoring_service('default')
     expect(chef_run).to start_rackspace_monitoring_service('default')
   end
   it 'adds appropriate repository and installs rackspace-monitor-agent' do
-    if %w(rhel fedora).include? platform
+    if %w[rhel fedora].include? platform
       expect(chef_run).to add_yum_repository('monitoring')
     else
       expect(chef_run).to add_apt_repository('monitoring')

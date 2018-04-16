@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'chef/resource/lwrp_base'
 
 class Chef

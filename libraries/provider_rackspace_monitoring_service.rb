@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'chef/resource/lwrp_base'
 
 class Chef
@@ -81,42 +82,42 @@ class Chef
       def service_enable
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(enable)
+          action %w[enable]
         end
       end
 
       def service_disable
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(disable)
+          action %w[disable]
         end
       end
 
       def service_start
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(start)
+          action %w[start]
         end
       end
 
       def service_stop
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(stop)
+          action %w[stop]
         end
       end
 
       def service_restart
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(restart)
+          action %w[restart]
         end
       end
 
       def service_reload
         service 'rackspace-monitoring-agent' do
           supports start: true, status: true, stop: true, restart: true
-          action %w(reload)
+          action %w[reload]
         end
       end
     end

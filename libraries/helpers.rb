@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RackspaceMonitoringCookbook
   # Helpers for the providers
   module Helpers
@@ -81,7 +82,7 @@ module RackspaceMonitoringCookbook
 
       def parsed_target_hostname
         return new_resource.target_hostname if new_resource.target_hostname
-        return node['cloud']['public_ipv4'] if node && node.key?('cloud')
+        return node['cloud']['public_ipv4'] if node&.key?('cloud')
         return node['ipaddress'] if node
         raise 'No node object, cannot determine hostname or ip'
       end
@@ -144,14 +145,14 @@ module RackspaceMonitoringCookbook
 
       def parsed_alarm_criteria
         return new_resource.alarm_criteria if new_resource.alarm_criteria
-        supported_alarm_criteria = %w(agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http)
+        supported_alarm_criteria = %w[agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.apache agent.mysql agent.redis agent.network remote.http]
         send('alarm_criteria_' + new_resource.type.tr('.', '_')) if supported_alarm_criteria.include?(new_resource.type)
       end
 
       def parsed_template_from_type
         return new_resource.template if new_resource.template
-        if %w( agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.network
-               remote.http agent.plugin agent.apache agent.mysql agent.redis ).include?(new_resource.type)
+        if %w[ agent.memory agent.cpu agent.load agent.filesystem agent.disk agent.network
+               remote.http agent.plugin agent.apache agent.mysql agent.redis ].include?(new_resource.type)
           "#{new_resource.type}.conf.erb"
         else
           Chef::Log.info("Using custom monitor for #{new_resource.type}")
@@ -222,7 +223,7 @@ module RackspaceMonitoringCookbook
       end
 
       def configure_package_repositories(channel)
-        if %w(rhel fedora).include? node['platform_family']
+        if %w[rhel fedora].include? node['platform_family']
           yum_repository 'monitoring' do
             description 'Rackspace Cloud Monitoring agent repo'
             baseurl "https://#{channel}.packages.cloudmonitoring.rackspace.com/#{node['platform']}-#{node['platform_version'][0]}-x86_64"
@@ -254,13 +255,11 @@ module RackspaceMonitoringCookbook
 
       def target_filesystem
         target = []
-        unless node['filesystem'].nil?
-          node['filesystem'].each do |key, data|
-            next if data['percent_used'].nil? || data['fs_type'].nil?
-            next if excluded_fs.include?(data['fs_type'])
-            Chef::Log.warn("Found filesystem : #{data['mount']}")
-            target << data['mount']
-          end
+        node['filesystem']&.each do |key, data|
+          next if data['percent_used'].nil? || data['fs_type'].nil?
+          next if excluded_fs.include?(data['fs_type'])
+          Chef::Log.warn("Found filesystem : #{data['mount']}")
+          target << data['mount']
         end
         target
       end
@@ -268,7 +267,7 @@ module RackspaceMonitoringCookbook
       def target_disk
         target = []
         node['filesystem'].each do |key, data|
-          if key =~ disks_pattern
+          if key&.match?(disks_pattern)
             Chef::Log.warn("Found disk : #{key}")
             target << key
           end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 if defined?(ChefSpec)
   # service
   def create_rackspace_monitoring_service(resource_name)

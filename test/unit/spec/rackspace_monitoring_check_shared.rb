@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 shared_examples_for 'agent config' do |agent, filename|
-  filename = agent unless filename
+  filename ||= agent
   it 'calls rackspace_monitoring_check resource' do
     expect(chef_run).to create_rackspace_monitoring_check(agent)
   end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Used by chefspec to create different context (attributes)
 
 rackspace_monitoring_check node['rackspace_monitoring_check_test']['type'] do

@@ -1,5 +1,6 @@
 # Encoding: utf-8
 # frozen_string_literal: true
+
 name 'rackspace_monitoring'
 maintainer 'Rackspace'
 maintainer_email 'rackspace-cookbooks@rackspace.com'

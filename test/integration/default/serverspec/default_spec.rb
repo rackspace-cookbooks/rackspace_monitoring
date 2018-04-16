@@ -1,5 +1,6 @@
 # Encoding: utf-8
 # frozen_string_literal: true
+
 require 'yaml'
 
 require_relative 'spec_helper'
@@ -14,7 +15,7 @@ describe file('/etc/rackspace-monitoring-agent.conf.d') do
 end
 
 # Checks
-check_files = %w(
+check_files = %w[
   agent.cpu
   remote.ping
   agent.disk.xda1
@@ -26,7 +27,7 @@ check_files = %w(
   agent.apache
   agent.mysql
   agent.redis
-)
+]
 check_files.each do |check|
   # Minimal test as content is tested in Chefspecs
   describe file("/etc/rackspace-monitoring-agent.conf.d/#{check}.yaml") do
