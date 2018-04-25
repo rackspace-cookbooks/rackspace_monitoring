@@ -17,6 +17,11 @@ LineLength:
 MethodLength:
   Max: 40
 
+# Increase allowed lines in a blocks.  Short blocks are good, but there's
+# longer blocks needed for our unit testing.
+Metrics/BlockLength:
+  Max: 400
+
 # Increase allowed lines in a module.  Short modules are good, but 100 lines
 #   is a bit too low.
 ModuleLength:
@@ -46,6 +51,20 @@ WordArray:
 # Don't complain about unused block args
 UnusedBlockArgument:
   Enabled: false
+
+# Not a mistake to use an assignment in condition here
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'Rakefile'
+
+# Standard file names in Ruby
+Style/FileName:
+  Exclude:
+    - 'Berksfile'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Rakefile'
+    - 'Thorfile'
 
 AllCops:
   Include:
