@@ -92,7 +92,7 @@ class Chef
           cookbook_file "#{plugin_path}/#{parsed_plugin_filename}" do
             cookbook new_resource.plugin_cookbook
             mode 0o755
-            source new_resource.parsed_plugin_filename
+            source parsed_plugin_filename
           end
         else
           Chef::Log.info("Downloading plugin from #{new_resource.plugin_url} to #{plugin_path}/#{parsed_plugin_filename}")
