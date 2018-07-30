@@ -72,3 +72,9 @@ AllCops:
   Include:
     - '**/metadata.rb'
     - '**/*.rb'
+
+Lint/InterpolationCheck:
+  Exclude:
+    - 'test/unit/spec/rackspace_monitoring_check_centos65_spec.rb'
+    - 'test/unit/spec/rackspace_monitoring_check_ubuntu1204_spec.rb'
+    - 'test/unit/spec/rackspace_monitoring_check_ubuntu1404_spec.rb'
