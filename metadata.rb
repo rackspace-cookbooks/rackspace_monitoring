@@ -11,6 +11,7 @@ version '1.1.2'
 
 issues_url 'https://github.com/rackspace-cookbooks/rackspace_monitoring/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/rackspace-cookbooks/rackspace_monitoring' if respond_to?(:source_url)
+chef_version '>= 12' if respond_to?(:chef_version)
 
 depends 'apt'
 depends 'yum'
