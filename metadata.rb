@@ -15,3 +15,5 @@ chef_version '>= 12' if respond_to?(:chef_version)
 
 depends 'apt'
 depends 'yum'
+
+supports 'ubuntu'
