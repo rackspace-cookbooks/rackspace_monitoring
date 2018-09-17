@@ -1,5 +1,10 @@
 rackspace_monitoring CHANGELOG
 ==================
+
+1.1.3
+-----
+- #46 - don't call an attribute on the resource when it shouldn't exist
+
 1.1.2
 -----
 - #37 - updates to the agent.plugin template
