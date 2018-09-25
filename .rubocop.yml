@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 # Rubocop,  we're buddies and all,  but we're going to have to disagree on the following -
 
 # Disable ABC, it's not needed in chef
@@ -58,7 +60,7 @@ Lint/AssignmentInCondition:
     - 'Rakefile'
 
 # Standard file names in Ruby
-Style/FileName:
+Style/Naming:
   Exclude:
     - 'Berksfile'
     - 'Gemfile'
@@ -70,3 +72,9 @@ AllCops:
   Include:
     - '**/metadata.rb'
     - '**/*.rb'
+
+Lint/InterpolationCheck:
+  Exclude:
+    - 'test/unit/spec/rackspace_monitoring_check_centos65_spec.rb'
+    - 'test/unit/spec/rackspace_monitoring_check_ubuntu1204_spec.rb'
+    - 'test/unit/spec/rackspace_monitoring_check_ubuntu1404_spec.rb'
